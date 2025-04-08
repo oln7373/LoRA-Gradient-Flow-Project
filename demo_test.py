@@ -9,7 +9,7 @@ import numpy as np
 from demo import A, b, x  # Import variables from your main script
 
 # Compute Ax
-Ax = A.dot(x)+1
+Ax = A.dot(x)
 
 # Check if Ax is approximately equal to b
 assert np.allclose(Ax, b, atol=1e-8), f"❌ Test failed: Ax != b\nAx = {Ax}\nb = {b}"
