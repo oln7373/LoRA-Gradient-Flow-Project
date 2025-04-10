@@ -16,8 +16,8 @@ from LoRA_gd_functions import grad_A, grad_B #import partial gradient functions 
 #define constants
 n = 64 #rows of W
 m = 64 #columns of W
-r = 8 #rank of AB
-alpha = 1e-7 #learning rate
+r = 4 #rank of AB
+alpha = 1e-6 #learning rate
 k = 100 #see algorithm 1 notation from notes
 tol = 1e-8
 high = 100 #range for uniform random integer generator 
@@ -37,18 +37,22 @@ iter = 0
 norm_prev = np.linalg.norm(W + A @ B, 'fro')
 diff = tol + 1 #force main loop to run at least once
 start_time = time.time()  #start the clock
-while (diff > tol): #convergence check included in the while loop statement
+while diff > tol:  # convergence check included in the while loop statement
 
     for i in range(k):
-        A = A - alpha*grad_A(A,B,W)
+        A = A - alpha * grad_A(A, B, W)
 
     for j in range(k):
-        B = B - alpha*grad_B(A,B,W)
+        B = B - alpha * grad_B(A, B, W)
 
     iter += 1
 
-    diff = abs(np.linalg.norm(W + A @ B, 'fro') - norm_prev)
-    norm_prev = np.linalg.norm(W + A @ B, 'fro')
+    if iter % 100000 == 0:
+        print(f"Iteration {iter}: Still working...")
+
+    norm_curr = np.linalg.norm(W + A @ B, 'fro')
+    diff = abs(norm_curr - norm_prev)
+    norm_prev = norm_curr
 
 end_time = time.time()  #stop the clock
 
