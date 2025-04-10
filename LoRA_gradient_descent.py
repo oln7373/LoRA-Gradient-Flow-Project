@@ -14,10 +14,10 @@ import time
 from LoRA_gd_functions import grad_A, grad_B #import partial gradient functions from another file
 
 #define constants
-n = 64 #rows of W
-m = 64 #columns of W
-r = 8 #rank of AB
-alpha = 1e-7 #learning rate
+n = 8 #rows of W
+m = 8 #columns of W
+r = 1 #rank of AB
+alpha = 1e-6 #learning rate
 k = 100 #see algorithm 1 notation from notes
 tol = 1e-8
 high = 100 #range for uniform random integer generator 
