@@ -18,7 +18,7 @@ n = 64 #rows of W
 m = 64 #columns of W
 r = 8 #rank of AB
 alpha = 5e-7 #learning rate
-k = 1 #see algorithm 1 notation from notes
+k = 1000 #see algorithm 1 notation from notes
 tol = 1e-8
 high = 100 #range for uniform random integer generator 
 
